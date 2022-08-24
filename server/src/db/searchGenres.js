@@ -1,5 +1,6 @@
 import  db  from './db.js';
 import assert from 'assert'
+import { url } from 'inspector';
 
  const searchGenres = async (searchString) => {
     const connection = db.getConnection();
@@ -13,12 +14,14 @@ import assert from 'assert'
                                                     ])
 
     // Check the request charge for the previous operation
-    connection.command({ getLastRequestStatistics: 1 }, function(err, result) {
+    //Check if using Mongo Atlas
+    if (db.getIsCosmos()) {
+        connection.command({ getLastRequestStatistics: 1 }, function(err, result) {
         assert.strictEqual(err, null);
         const requestCharge = result['RequestCharge'];
         console.log("Request charge for the search genres pipeline was: ", requestCharge);
     });
-
+    }   
     //Convert pipeline cursor to an array
     const genres = await aggCursor.toArray();
 

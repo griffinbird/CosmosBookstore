@@ -1,0 +1,34 @@
+{
+  "apiVersion": "2021-06-15",
+  "name": "cosmosbookstorevphs3rhqtjxya/cosmosbookstore/books",
+  "properties": {
+    "resource": {
+      "id": "books",
+      "indexes": [
+        {
+          "key": {
+            "keys": [
+              "_id"
+            ]
+          }
+        },
+        {
+          "key": {
+            "keys": [
+              "rating"
+            ]
+          }
+        },
+        {
+          "key": {
+            "keys": [
+              "author",
+              "bookformat"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "type": "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections"
+}

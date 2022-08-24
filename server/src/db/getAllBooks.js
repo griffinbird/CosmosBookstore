@@ -1,4 +1,5 @@
 import db from './db.js';
+import assert from 'assert';
 
 async function getAllBooks(page = 0, limit = 20, sortby, rating, format, genre) {
     const connection = db.getConnection();
@@ -42,6 +43,15 @@ async function getAllBooks(page = 0, limit = 20, sortby, rating, format, genre) 
     const displayCursor = cursor.limit(limit).skip(page * limit)
 
     const books = await displayCursor.toArray();
+     // Check the request charge for the previous operation
+    //Check if using Mongo Atlas
+    if (db.getIsCosmos()) {
+        connection.command({ getLastRequestStatistics: 1 }, function(err, result) {
+        assert.strictEqual(err, null);
+        const requestCharge = result['RequestCharge'];
+        console.log("Request charge for getAllBooks was: ", requestCharge);
+    });
+    }
     return books;
 }
 

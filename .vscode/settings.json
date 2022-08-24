@@ -1,0 +1,10 @@
+{
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.defaultWebAppToDeploy": "/subscriptions/84faa6cb-13af-490d-acec-d5f2604365f2/microsoft.web/sites/subscriptions/84faa6cb-13af-490d-acec-d5f2604365f2/resourceGroups/cosmos-demo/providers/Microsoft.Web/sites/CosmosBookStorevphs3rhqtjxya",
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}",
+        "package-lock.json",
+    ]
+}
